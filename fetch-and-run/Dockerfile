@@ -1,4 +1,4 @@
-# This image is in Docker Hub as fredhutch/r-with-git-fetch-and-run:latest
+# This image is in Docker Hub as fredhutch/r-with-url-fetch-and-run:latest
 
 FROM fredhutch/ls2_r:3.5.0
 
