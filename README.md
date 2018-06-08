@@ -49,3 +49,40 @@ of `BATCH_FILE_URL`:
 https://raw.githubusercontent.com/FredHutch/git-fetch-and-run/master/fetch-and-run/myjob.sh
 ```
 
+## Actual example
+
+To use the [example script](https://github.com/FredHutch/git-fetch-and-run/blob/master/fetch-and-run/myjob.sh) in this directory, set your environment variables as follows:
+
+```
+BATCH_FILE_TYPE=script
+BATCH_FILE_URL=https://raw.githubusercontent.com/FredHutch/git-fetch-and-run/master/fetch-and-run/myjob.sh
+```
+
+Then set your `command` as follows in your job submission:
+
+```json
+["myjob.sh", "1"]
+```
+
+The `1` is the argument to `sleep` in `myjob.sh`.
+
+## Actual example, using a zip file.
+
+The [zip file](https://github.com/FredHutch/git-fetch-and-run/blob/master/fetch-and-run/test.zip) 
+in this directory contains [azipscript.sh](https://github.com/FredHutch/git-fetch-and-run/blob/master/fetch-and-run/azipscript.sh) and 
+[someotherfile.txt](https://github.com/FredHutch/git-fetch-and-run/blob/master/fetch-and-run/someotherfile.txt). 
+
+To run a batch job using this zip file, set the following
+environment variables/values:
+
+```
+BATCH_FILE_TYPE=zip
+BATCH_FILE_URL=https://github.com/FredHutch/git-fetch-and-run/blob/master/fetch-and-run/test.zip?raw=true
+```
+
+And set your `command` as follows in the job submission:
+
+```json
+["azipscript.sh", "a", "b", "c", "d"]
+```
+
