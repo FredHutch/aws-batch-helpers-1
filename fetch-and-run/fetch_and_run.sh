@@ -11,8 +11,8 @@
 # OR CONDITIONS OF ANY KIND, express or implied. See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This script can help you download and run a script from S3 using aws-cli.
-# It can also download a zip file from S3 and run a script from inside.
+# This script can help you download and run a script from a URL using curl.
+# It can also download a zip file from a URL and run a script from inside.
 # See below for usage instructions.
 
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
@@ -27,13 +27,13 @@ usage () {
 Usage:
 
 export BATCH_FILE_TYPE="script"
-export BATCH_FILE_URL="s3://my-bucket/my-script"
-${BASENAME} script-from-s3 [ <script arguments> ]
+export BATCH_FILE_URL="https://some.url..."
+${BASENAME} script-from-url [ <script arguments> ]
 
   - or -
 
 export BATCH_FILE_TYPE="zip"
-export BATCH_FILE_URL="s3://my-bucket/my-zip"
+export BATCH_FILE_URL="https://url.to/file.zip"
 ${BASENAME} script-from-zip [ <script arguments> ]
 ENDUSAGE
 
@@ -55,10 +55,6 @@ if [ -z "${BATCH_FILE_URL}" ]; then
   usage "BATCH_FILE_URL not set. No object to download."
 fi
 
-# scheme="$(echo "${BATCH_FILE_URL}" | cut -d: -f1)"
-# if [ "${scheme}" != "s3" ]; then
-#   usage "BATCH_FILE_URL must be for an S3 object; expecting URL starting with s3://"
-# fi
 
 # Check that necessary programs are available
 which aws >/dev/null 2>&1 || error_exit "Unable to find AWS CLI executable."
@@ -96,7 +92,7 @@ fetch_and_run_script () {
 fetch_and_run_zip () {
   # Create a temporary file and download the zip file
 
-  curl -L "${BATCH_FILE_URL}" > "${TMPFILE}" || error_exit "Failed to download S3 zip file from ${BATCH_FILE_URL}"
+  curl -L "${BATCH_FILE_URL}" > "${TMPFILE}" || error_exit "Failed to download zip file from ${BATCH_FILE_URL}"
 
   # Create a temporary directory and unpack the zip file
   cd "${TMPDIR}" || error_exit "Unable to cd to temporary directory."

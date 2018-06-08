@@ -41,4 +41,11 @@ Do *not* use a url like `https://github.com/MyGitHubUserId/MyRepoName/blob/maste
 the resulting URL. It should always refer to the host 
 `raw.githubusercontent.com`.
 
+To specify the test script in the `fetch-and-run` directory
+of this repository, use the following URL as the value 
+of `BATCH_FILE_URL`:
+
+```
+https://raw.githubusercontent.com/FredHutch/git-fetch-and-run/master/fetch-and-run/myjob.sh
+```
 
