@@ -39,7 +39,7 @@ BATCH_FILE_URL=https://raw.githubusercontent.com/MyGitHubUserId/MyRepoName/maste
 Note that `BATCH_FILE_URL` points to the *raw* script on GitHub.
 Do *not* use a url like `https://github.com/MyGitHubUserId/MyRepoName/blob/master/MyScript.sh`. Instead, click the `Raw` button in GitHub and then copy 
 the resulting URL. It should always refer to the host 
-`raw.githubusercontent.com`.
+`raw.githubusercontent.com` or contain the string `raw=true`.
 
 To specify the test script in the `fetch-and-run` directory
 of this repository, use the following URL as the value 
