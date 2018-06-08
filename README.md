@@ -22,7 +22,9 @@ Instructions for this script are pretty much identical to
 [the original instructions](https://aws.amazon.com/blogs/compute/creating-a-simple-fetch-and-run-aws-batch-job/)
 except that `BATCH_FILE_S3_URL` has been replaced with
 `BATCH_FILE_URL`, and you can provide any publicly accessible
-URL, as opposed to S3 URLs in the original.
+URL, as opposed to S3 URLs in the original. And of course, you must
+clone this repository rather than downloading the original 
+AWS version's zip file.
 
 ## Simple Example
 
